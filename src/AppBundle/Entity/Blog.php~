@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
+ * @ORM\Table(name="blog")
+ */
+class Blog{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     */
+    protected $name;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
+     * @ORM\Column(type="datetime")
+     */
+    protected $date;
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="text")
+     */
+    protected $szoveg;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $szamlalo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blogId")
+     */
+    private $comments;
+}

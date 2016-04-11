@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block title %} Blog hozzáadása {% endblock %}
+
+{% block body %}
+    <a href="{{ path("blog_lista") }}">Vissza a Blogokhoz</a>
+    {{ form_start(blog) }}
+    {{ form_errors(blog) }}
+    <div>
+        {{ form_label(blog.name)}}
+        <!-- comment -->
+        {{ form_errors(blog.name) }}
+        {{ form_widget(blog.name) }}
+    </div>
+    <div>
+        {{ form_label(blog.szoveg) }}
+        {{ form_errors(blog.szoveg) }}
+        {{ form_widget(blog.szoveg) }}
+    </div>
+    <div>
+        {{ form_label(blog.upload) }}
+        {{ form_widget(blog.upload) }}
+    </div>
+
+    {{ form_end(blog) }}
+{% endblock %}

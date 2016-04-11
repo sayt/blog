@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ blog.name }}
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path("blog_lista") }}">Vissza a Blogokhoz</a>
+    <p>Látogatások száma: {{ blog.szamlalo }}</p>
+    <h1>{{ blog.name }}</h1>
+    <p>{{ blog.szoveg }}</p>
+    <br />
+    <a href="{{ path("comment_new", {"blog":blog.id}) }}">Comment hozzáadása</a>
+    {% for comment in comments %}
+        <p>
+            neve: <b>{{ comment.name }}</b> <br />
+            dátum: {{ comment.date|date("Y-m-d H:i") }} <br />
+            email címe: {{ comment.email }}<br />
+            szövege:<br />
+            {{ comment.szoveg }}
+        </p>
+    {% endfor %}
+{% endblock %}

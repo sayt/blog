@@ -1,3 +1,4 @@
+@@ -1,88 +0,0 @@
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*

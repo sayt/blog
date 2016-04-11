@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Main Page line
+{% endblock %}
+
+{% block body %}
+    <a href={{ path("blog_lista") }}>Blog Teljes Listája</a><br />
+    {% for blog in blogs %}
+        <p>
+            <a href={{ path("blog_view", {"id":blog.id}) }}>{{ blog.name }}</a><br />
+            írás ideje: {{ blog.date|date("Y-m-d H:i") }}<br />
+            Látogatások száma:{{ blog.szamlalo }}
+        </p>
+    {% endfor %}
+    <<<a href="{{ path("blog_query", {"blog":(blogs|first.id), "line":"pre" }) }}">Pre</a>>> <<
+    <a href="{{ path("blog_query", {"blog":(blogs|last.id), "line":"next" }) }}">Next</a>>>
+{% endblock %}

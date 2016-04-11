@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block title %} Blog keresés {% endblock %}
+
+{% block body %}
+    <a href="{{ path("blog_lista") }}">Vissza a Blogokhoz</a>
+    {{ form_start(date) }}
+    {{ form_errors(date) }}
+    <div>
+        {{ form_label(date.minDate) }}
+        {{ form_errors(date.minDate) }}
+        {{ form_widget(date.minDate) }}
+    </div>
+    <div>
+        {{ form_label(date.maxDate) }}
+        {{ form_errors(date.maxDate) }}
+        {{ form_widget(date.maxDate) }}
+    </div>
+    <div>
+        {{ form_label(date.keres) }}
+        {{ form_widget(date.keres) }}
+    </div>
+
+    {{ form_end(date) }}
+{% endblock %}

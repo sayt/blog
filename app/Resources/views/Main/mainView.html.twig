@@ -4,13 +4,15 @@
 {% endblock %}
 
 {% block body %}
-    <a href={{ path("blog_lista") }}>Blog Teljes Listája</a><br />
-    <a href={{ path("blog_query", {"blog":blogs|last.id, "line":"pre"}) }}>Blog szürő</a><br />
-    {% for blog in blogs %}
-    <p>
-    <a href={{ path("blog_view", {"id":blog.id}) }}>{{ blog.name }}</a><br />
-    írás ideje: {{ blog.date|date("Y-m-d H:i") }}<br />
-    Látogatások száma:{{ blog.szamlalo }}
-    </p>
-    {% endfor %}
+        Hello {{ app.user.username }} !<br /><br />
+        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a><br />
+        <a href={{ path("blog_lista") }}>Blog Teljes Listája</a><br />
+        <a href={{ path("blog_query", {"blog":blogs|last.id, "line":"pre"}) }}>Blog szürő</a><br />
+        {% for blog in blogs %}
+            <p>
+                <a href={{ path("blog_view", {"id":blog.id}) }}>{{ blog.name }}</a><br />
+                írás ideje: {{ blog.date|date("Y-m-d H:i") }}<br />
+                Látogatások száma:{{ blog.szamlalo }}
+            </p>
+        {% endfor %}
 {% endblock %}

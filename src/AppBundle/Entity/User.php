@@ -21,7 +21,6 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
      *     max=255,
@@ -31,6 +30,11 @@ class User extends BaseUser
      * )
      */
     protected $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Blog", mappedBy="owner")
+     */
+    protected $blog;
 
     public function __construct()
     {
@@ -59,5 +63,38 @@ class User extends BaseUser
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add blog
+     *
+     * @param \AppBundle\Entity\Blog $blog
+     * @return User
+     */
+    public function addBlog(\AppBundle\Entity\Blog $blog)
+    {
+        $this->blog[] = $blog;
+
+        return $this;
+    }
+
+    /**
+     * Remove blog
+     *
+     * @param \AppBundle\Entity\Blog $blog
+     */
+    public function removeBlog(\AppBundle\Entity\Blog $blog)
+    {
+        $this->blog->removeElement($blog);
+    }
+
+    /**
+     * Get blog
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBlog()
+    {
+        return $this->blog;
     }
 }

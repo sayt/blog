@@ -18,6 +18,8 @@ class CommentController extends Controller
         $comment = new Comment();
 
         $comment->setDate(new \DateTime("now"));
+        $comment->setName($this->getUser()->getUsername());
+        $comment->setEmail($this->getUser()->getEmail());
         $comment->setBlog($blog);
         $form = $this->createForm(new CommentFormType1(), $comment);
         $form->handleRequest($request);

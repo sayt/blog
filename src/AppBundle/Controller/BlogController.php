@@ -26,6 +26,7 @@ class BlogController extends Controller
         if($form->isValid())
         {
             $blog->setSzamlalo(0);
+            $blog->setOwner($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($blog);
             $em->flush();

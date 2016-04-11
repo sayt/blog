@@ -46,6 +46,13 @@ class Blog{
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
      */
     private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="blog")
+     * @ORM\JoinColumn(name="blog", referencedColumnName="id")
+     */
+    private $owner;
+
     /**
      * Constructor
      */
@@ -187,5 +194,28 @@ class Blog{
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     * @return Blog
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
     }
 }

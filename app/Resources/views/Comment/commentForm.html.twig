@@ -7,19 +7,9 @@
     {{ form_start(comment) }}
     {{ form_errors(comment) }}
         <div>
-            {{ form_label(comment.name) }}
-            {{ form_errors(comment.name) }}
-            {{ form_widget(comment.name) }}
-        </div>
-        <div>
             {{ form_label(comment.szoveg) }}
             {{ form_errors(comment.szoveg) }}
             {{ form_widget(comment.szoveg) }}
-        </div>
-        <div>
-            {{ form_label(comment.email) }}
-            {{ form_errors(comment.email) }}
-            {{ form_widget(comment.email) }}
         </div>
         <div>
             {{ form_label(comment.upload) }}
